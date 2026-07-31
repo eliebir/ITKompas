@@ -13,6 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* Art direction: flyer-inspired local IT service → betrouwbaar, direct en modern
+       Palette: koel blauw, donkerblauw als basis, cyaan als accent
+       Typography: Barlow Condensed + Plus Jakarta Sans — sterk, duidelijk en goed leesbaar
+       Density: balanced */
     :root, [data-theme="light"] {
       --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
       --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
@@ -47,7 +51,6 @@
       --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
       --font-body: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
     }
-
     [data-theme="dark"] {
       --color-bg: #0f1433;
       --color-surface: #171d45;
@@ -69,7 +72,6 @@
       --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.28);
       --shadow-md: 0 16px 38px rgba(0, 0, 0, 0.4);
     }
-
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme]) {
         --color-bg: #0f1433; --color-surface: #171d45; --color-surface-2: #1c2556; --color-surface-offset: #202c67;
@@ -79,22 +81,11 @@
         --color-blue: #65a8ff; --color-purple: #9792ff; --shadow-sm: 0 8px 20px rgba(0,0,0,.28); --shadow-md: 0 16px 38px rgba(0,0,0,.4);
       }
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; text-size-adjust: none; }
-    body {
-      min-height: 100dvh;
-      line-height: 1.6;
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      color: var(--color-text);
-      background: linear-gradient(180deg, var(--color-bg), var(--color-surface-2));
-    }
-
+    body { min-height: 100dvh; line-height: 1.6; font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text); background: linear-gradient(180deg, var(--color-bg), var(--color-surface-2)); }
     img, svg { display: block; max-width: 100%; }
-    a, button, input, textarea {
-      transition: color var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive), transform var(--transition-interactive);
-    }
+    a, button, input, textarea { transition: color var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), box-shadow var(--transition-interactive), transform var(--transition-interactive); }
     a { color: inherit; text-decoration: none; }
     button { border: 0; background: none; cursor: pointer; }
     :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
@@ -103,16 +94,7 @@
     .skip-link:focus { top: var(--space-4); }
     .container { width: min(100% - 2rem, var(--content-default)); margin-inline: auto; }
     .section { padding: clamp(var(--space-12), 8vw, var(--space-20)) 0; }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: color-mix(in srgb, var(--color-bg) 84%, transparent);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-    }
-
+    .header { position: sticky; top: 0; z-index: 100; background: color-mix(in srgb, var(--color-bg) 84%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
     .nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-height: 78px; }
     .brand { display: flex; align-items: center; gap: var(--space-3); font-weight: 800; }
     .brand-mark { width: 44px; height: 44px; color: var(--color-text); }
@@ -121,254 +103,76 @@
     .nav-links { display: flex; align-items: center; gap: var(--space-4); margin-left: auto; }
     .nav-links a { font-size: var(--text-sm); color: var(--color-text-muted); }
     .nav-links a:hover { color: var(--color-text); }
-
-    .theme-toggle {
-      width: 44px;
-      height: 44px;
-      display: inline-grid;
-      place-items: center;
-      border-radius: var(--radius-full);
-      background: var(--color-surface);
-      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-      box-shadow: var(--shadow-sm);
-    }
-
+    .theme-toggle { width: 44px; height: 44px; display: inline-grid; place-items: center; border-radius: var(--radius-full); background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); box-shadow: var(--shadow-sm); }
     .hero { position: relative; overflow: hidden; }
     .hero-grid { display: grid; gap: var(--space-10); align-items: center; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
-      border-radius: var(--radius-full);
-      background: var(--color-primary-highlight);
-      color: var(--color-text);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 8vw, 6.8rem);
-      line-height: 0.92;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-top: var(--space-5);
-    }
-
+    .eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); background: var(--color-primary-highlight); color: var(--color-text); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6.8rem); line-height: 0.92; text-transform: uppercase; letter-spacing: 0.02em; margin-top: var(--space-5); }
     .hero p.lead { margin-top: var(--space-5); color: var(--color-text-muted); max-width: 62ch; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6); }
-
-    .btn {
-      min-height: 48px;
-      padding: 0.95rem 1.2rem;
-      border-radius: var(--radius-full);
-      font-weight: 700;
-      font-size: var(--text-sm);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--space-2);
-    }
-
+    .btn { min-height: 48px; padding: 0.95rem 1.2rem; border-radius: var(--radius-full); font-weight: 700; font-size: var(--text-sm); display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); }
     .btn-primary { background: var(--color-primary); color: var(--color-text-inverse); box-shadow: var(--shadow-md); }
     .btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); }
     .btn-secondary { background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); color: var(--color-text); }
-
     .hero-points { display: grid; gap: var(--space-3); margin-top: var(--space-8); }
-    .hero-points li {
-      list-style: none;
-      display: flex;
-      gap: var(--space-3);
-      align-items: flex-start;
-      padding: var(--space-3) var(--space-4);
-      border-radius: var(--radius-lg);
-      background: color-mix(in srgb, var(--color-surface) 86%, transparent);
-      border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
-    }
-
-    .tick {
-      flex: 0 0 26px;
-      width: 26px;
-      height: 26px;
-      border-radius: 7px;
-      display: grid;
-      place-items: center;
-      color: var(--color-text-inverse);
-      background: linear-gradient(180deg, var(--color-primary), var(--color-blue));
-      font-size: 0.85rem;
-      font-weight: 900;
-    }
-
-    .hero-card {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      max-width: 460px;
-    }
-
+    .hero-points li { list-style: none; display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3) var(--space-4); border-radius: var(--radius-lg); background: color-mix(in srgb, var(--color-surface) 86%, transparent); border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent); }
+    .tick { flex: 0 0 26px; width: 26px; height: 26px; border-radius: 7px; display: grid; place-items: center; color: var(--color-text-inverse); background: linear-gradient(180deg, var(--color-primary), var(--color-blue)); font-size: 0.85rem; font-weight: 900; }
+    /* .hero-card { position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 50%, transparent), var(--color-surface)); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); border-radius: 2rem; padding: var(--space-6); box-shadow: var(--shadow-md); } */
+    .hero-visual { aspect-ratio: 4 / 5; border-radius: 1.6rem; background: linear-gradient(135deg, var(--color-blue), var(--color-primary) 52%, var(--color-purple)); padding: var(--space-4); position: relative; overflow: hidden; }
+    .hero-circle { position: absolute; border-radius: 999px; border: 12px solid #19a6ef; background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.74)); }
+    .hero-circle.one { width: 78%; aspect-ratio: 1; right: -8%; top: 7%; }
+    .hero-circle.two { width: 46%; aspect-ratio: 1; right: 7%; bottom: 6%; border-width: 10px; }
+    .hero-caption { position: absolute; left: var(--space-4); right: var(--space-4); bottom: var(--space-4); background: rgba(35,38,95,.92); color: #fff; border-radius: var(--radius-xl); padding: var(--space-4); display: grid; gap: var(--space-3); }
+    .hero-caption strong { display: block; font-size: var(--text-sm); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-3); }
+    .hero-stat { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-lg); padding: var(--space-3); }
+    .hero-stat .value { display: block; font-family: var(--font-display); font-size: 1.8rem; line-height: 0.9; }
+    .hero-stat .label { display: block; margin-top: 0.35rem; font-size: var(--text-xs); color: rgba(255,255,255,.8); text-transform: uppercase; letter-spacing: 0.06em; }
     .kicker { color: var(--color-primary); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: var(--text-xs); }
     h2 { font-size: var(--text-xl); font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
     .section-intro { display: grid; gap: var(--space-4); margin-bottom: var(--space-8); }
     .section-intro p { color: var(--color-text-muted); max-width: 65ch; }
     .services-grid { display: grid; gap: var(--space-4); }
-
-    .service-card {
-      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent), color-mix(in srgb, var(--color-surface-offset) 96%, transparent));
-      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-      border-radius: var(--radius-xl);
-      padding: var(--space-5);
-      box-shadow: var(--shadow-sm);
-    }
-
+    .service-card { background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 88%, transparent), color-mix(in srgb, var(--color-surface-offset) 96%, transparent)); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); border-radius: var(--radius-xl); padding: var(--space-5); box-shadow: var(--shadow-sm); }
     .service-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
     .service-card p { color: var(--color-text-muted); }
     .price-wrap { display: grid; gap: var(--space-4); }
-
-    .price-main {
-      background: linear-gradient(140deg, var(--color-purple), #2f60a5 55%, var(--color-primary));
-      color: #fff;
-      border-radius: 2rem;
-      padding: clamp(var(--space-6), 4vw, var(--space-10));
-      box-shadow: var(--shadow-md);
-    }
-
+    .price-main { background: linear-gradient(140deg, var(--color-purple), #2f60a5 55%, var(--color-primary)); color: #fff; border-radius: 2rem; padding: clamp(var(--space-6), 4vw, var(--space-10)); box-shadow: var(--shadow-md); }
     .price-main .amount { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 5rem); line-height: 0.9; }
     .price-list { display: grid; gap: var(--space-3); }
-
-    .price-item {
-      padding: var(--space-4);
-      border-radius: var(--radius-lg);
-      background: var(--color-surface);
-      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-    }
-
+    .price-item { padding: var(--space-4); border-radius: var(--radius-lg); background: var(--color-surface); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
     .note { font-size: var(--text-sm); color: var(--color-text-muted); }
-
-    .about-band {
-      background: var(--color-purple);
-      color: #fff;
-      border-radius: 2rem;
-      padding: clamp(var(--space-6), 4vw, var(--space-10));
-      display: grid;
-      gap: var(--space-5);
-    }
-
+    .about-band { background: var(--color-purple); color: #fff; border-radius: 2rem; padding: clamp(var(--space-6), 4vw, var(--space-10)); display: grid; gap: var(--space-5); }
     .about-band p { color: rgba(255,255,255,.9); }
     .contact-grid { display: grid; gap: var(--space-4); }
-
-    .contact-card, .contact-form {
-      background: var(--color-surface);
-      border-radius: var(--radius-xl);
-      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-      padding: var(--space-5);
-      box-shadow: var(--shadow-sm);
-    }
-
+    .contact-card, .contact-form { background: var(--color-surface); border-radius: var(--radius-xl); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); padding: var(--space-5); box-shadow: var(--shadow-sm); }
     .contact-list { display: grid; gap: var(--space-3); margin-top: var(--space-4); }
     .contact-list a, .contact-list p { color: var(--color-text-muted); }
     form { display: grid; gap: var(--space-4); }
     label { font-size: var(--text-sm); font-weight: 700; }
-
-    input, textarea {
-      width: 100%;
-      margin-top: var(--space-2);
-      border-radius: var(--radius-md);
-      border: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent);
-      background: var(--color-surface-2);
-      color: var(--color-text);
-      padding: 0.9rem 1rem;
-    }
-
+    input, textarea { width: 100%; margin-top: var(--space-2); border-radius: var(--radius-md); border: 1px solid color-mix(in srgb, var(--color-text) 14%, transparent); background: var(--color-surface-2); color: var(--color-text); padding: 0.9rem 1rem; }
     textarea { min-height: 140px; resize: vertical; }
     .contact-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
-
-    .footer {
-      padding: var(--space-8) 0 var(--space-12);
-      border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-    }
-
-    .footer-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: var(--space-4);
-      color: var(--color-text-muted);
-      text-align: center;
-    }
-
+    .footer { padding: var(--space-8) 0 var(--space-12); border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
+    .footer-row { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); color: var(--color-text-muted); text-align: center; }
     .sticky-bar { position: sticky; bottom: var(--space-4); z-index: 90; margin-top: var(--space-8); }
-
-    .sticky-inner {
-      display: flex;
-      gap: var(--space-3);
-      padding: var(--space-3);
-      background: color-mix(in srgb, var(--color-surface) 92%, transparent);
-      backdrop-filter: blur(14px);
-      border-radius: var(--radius-full);
-      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
-      box-shadow: var(--shadow-md);
-    }
-
+    .sticky-inner { display: flex; gap: var(--space-3); padding: var(--space-3); background: color-mix(in srgb, var(--color-surface) 92%, transparent); backdrop-filter: blur(14px); border-radius: var(--radius-full); border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); box-shadow: var(--shadow-md); }
     .sticky-inner .btn { flex: 1; }
-
     @media (min-width: 900px) {
       .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
       .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .price-wrap { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
       .contact-grid { grid-template-columns: 0.85fr 1.15fr; }
     }
-
     @media (max-width: 760px) {
       .nav { align-items: flex-start; padding: var(--space-4) 0; }
       .nav-links { display: none; }
-
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr) clamp(95px, 28vw, 150px);
-        gap: var(--space-4);
-        align-items: start;
-      }
-
-      .hero h1 {
-        max-width: none;
-        font-size: clamp(2.2rem, 8vw, 3.4rem);
-      }
-
-      .hero p.lead {
-        margin-top: var(--space-4);
-      }
-
-      .hero-actions {
-        margin-top: var(--space-5);
-      }
-
-      .hero-points {
-        margin-top: var(--space-6);
-      }
-
-      .hero-card {
-        align-self: start;
-        justify-content: flex-end;
-      }
-
-      .hero-image {
-        width: 100%;
-        max-width: 150px;
-        height: auto;
-      }
-
+      .hero h1 { max-width: 8ch; }
+      .hero-caption { position: static; margin-top: auto; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 420px; display: flex; flex-direction: column; justify-content: flex-end; }
       .sticky-inner { flex-direction: column; border-radius: var(--radius-xl); }
     }
-
     @media (prefers-reduced-motion: reduce) {
       * { scroll-behavior: auto !important; }
     }
@@ -376,7 +180,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Ga direct naar de inhoud</a>
-
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="IT Kompas home">
@@ -395,18 +198,14 @@
           <span>Uw partner voor slimme oplossingen</span>
         </span>
       </a>
-
       <nav class="nav-links" aria-label="Hoofdmenu">
         <a href="#diensten">Diensten</a>
         <a href="#tarieven">Tarieven</a>
         <a href="#werkwijze">Werkwijze</a>
         <a href="#contact">Contact</a>
       </nav>
-
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Wissel van kleurmodus">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
     </div>
   </header>
@@ -418,19 +217,16 @@
           <span class="eyebrow">IT service aan huis of op afstand</span>
           <h1>Snelle IT-hulp zonder gedoe</h1>
           <p class="lead">IT Kompas helpt particulieren en kleine bedrijven met trage laptops, wifi-problemen, e-mail, beveiliging en digitale vragen. Duidelijke uitleg, praktische hulp en direct inzicht in de kosten.</p>
-
           <div class="hero-actions">
             <a class="btn btn-primary" href="tel:+31686276130">Bel direct</a>
             <a class="btn btn-secondary" href="#contact">Stuur bericht</a>
           </div>
-
           <ul class="hero-points" role="list">
             <li><span class="tick">✓</span><span>€16 per 15 minuten, minimale afname 30 minuten.</span></li>
             <li><span class="tick">✓</span><span>€10 vervoerskosten voor hulp op locatie.</span></li>
             <li><span class="tick">✓</span><span>Hulp in begrijpelijke taal, rustig en zonder onnodige vaktermen.</span></li>
           </ul>
         </div>
-
         <aside class="hero-card" aria-label="Illustratie IT-hulp">
           <img
             src="./helppng.png"
@@ -448,23 +244,19 @@
           <h2>Waarmee wij helpen</h2>
           <p>Dit zijn onze belangrijkste diensten.</p>
         </div>
-
         <div class="services-grid">
           <article class="service-card">
             <h3>Computer & laptop</h3>
             <p>Hulp bij trage computers, foutmeldingen, updates, opschonen, beveiliging en algemeen onderhoud zodat uw apparaat weer vlot en veilig werkt.</p>
           </article>
-
           <article class="service-card">
             <h3>Telefoon & tablet</h3>
             <p>Instellen van apps, opslagruimte beheren, koppeling met pc, back-up regelen en basisbeveiliging verbeteren op iPhone, Android of tablet.</p>
           </article>
-
           <article class="service-card">
             <h3>TV, printer & back-up</h3>
             <p>Apparaten verbinden, storingen oplossen, printer instellen en zorgen dat foto’s en documenten veilig worden opgeslagen of geback-upt.</p>
           </article>
-
           <article class="service-card">
             <h3>Internet & e-mail</h3>
             <p>Wifi-problemen oplossen, modem of router controleren, e-mail goed instellen en hulp bij spam, phishing en veilig digitaal werken.</p>
@@ -481,7 +273,6 @@
           <div class="amount">€16</div>
           <p>Per 15 minuten. Minimale afname: 30 minuten.</p>
         </div>
-
         <div class="price-list">
           <div class="price-item">
             <strong>Starttarief afspraak</strong>
@@ -495,6 +286,7 @@
             <strong>Hulp op afstand</strong>
             <p>Geen vervoerskosten. Handig voor e-mail, instellingen, software en kleinere technische vragen.</p>
           </div>
+          <!-- <p class="note">Tip voor de website: deze prijsblokken staan bewust vroeg op de pagina, zodat bezoekers direct weten waar ze aan toe zijn.</p> -->
         </div>
       </div>
     </section>
@@ -516,7 +308,6 @@
           <span class="kicker">Contact</span>
           <h2>Direct bereikbaar</h2>
           <p style="margin-top:1rem; color:var(--color-text-muted);">Neem direct contact met ons op voor hulp, advies of een afspraak.</p>
-
           <div class="contact-list">
             <a href="tel:+31686276130"><strong>Telefoon:</strong> +31 6 86276130</a>
             <a href="mailto:info@itkompas.com"><strong>E-mail:</strong> info@itkompas.com</a>
@@ -524,34 +315,28 @@
             <a href="https://wa.me/31686276130" target="_blank" rel="noopener noreferrer"><strong>WhatsApp:</strong> start direct een gesprek</a>
             <p><strong>Service:</strong> aan huis of op afstand</p>
           </div>
-
           <div class="hero-actions" style="margin-top:1.5rem;">
             <a class="btn btn-primary" href="https://wa.me/31686276130" target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a class="btn btn-secondary" href="mailto:info@itkompas.com">E-mail</a>
           </div>
         </article>
-
         <section class="contact-form" aria-labelledby="formulier-titel">
           <span class="kicker">Bericht</span>
           <h2 id="formulier-titel">Eenvoudig contactformulier</h2>
           <p style="margin-top:1rem; color:var(--color-text-muted);">Stuur ons eenvoudig een bericht. Wij nemen daarna zo snel mogelijk contact met u op.</p>
-
           <form action="mailto:info@itkompas.com" method="post" enctype="text/plain">
             <div>
               <label for="naam">Naam</label>
               <input id="naam" name="Naam" type="text" placeholder="Uw naam" required />
             </div>
-
             <div>
               <label for="email">E-mailadres</label>
               <input id="email" name="Email" type="email" placeholder="uw@email.nl" required />
             </div>
-
             <div>
               <label for="bericht">Bericht</label>
               <textarea id="bericht" name="Bericht" placeholder="Beschrijf kort waarmee u hulp nodig heeft" required></textarea>
             </div>
-
             <div class="contact-actions">
               <button class="btn btn-primary" type="submit">Verstuur via e-mail</button>
               <a class="btn btn-secondary" href="tel:+31686276130">Liever bellen</a>
@@ -559,7 +344,6 @@
           </form>
         </section>
       </div>
-
       <div class="container sticky-bar">
         <div class="sticky-inner">
           <a class="btn btn-primary" href="tel:+31686276130">Bel nu</a>
@@ -582,15 +366,12 @@
       const root = document.documentElement;
       let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       root.setAttribute('data-theme', theme);
-
       const renderIcon = () => {
         toggle.innerHTML = theme === 'dark'
           ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
           : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
       };
-
       renderIcon();
-
       toggle.addEventListener('click', () => {
         theme = theme === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', theme);
